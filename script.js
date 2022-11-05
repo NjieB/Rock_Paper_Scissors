@@ -6,3 +6,4 @@ function getComputerChoice(){
 }    
 getComputerChoice();
 
+let playerSelection = prompt("Rock, Paper, or Scissors").toLowerCase()
