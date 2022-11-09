@@ -16,7 +16,7 @@ function playRound(computerSelection,playerSelection){
     
     if (computerSelection == "rock" && playerSelection == "scissors"){
         x--
-        return "Sorry, you lost."
+        return "Sorry, you lost. -1 point"
     }
     else if (computerSelection == "rock" &&  playerSelection == "paper"){
         x++ 
