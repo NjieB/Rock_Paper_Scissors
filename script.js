@@ -4,53 +4,101 @@ function getComputerChoice(){
     const choice = roshambo[Math.floor(Math.random() * roshambo.length)];
     return choice;
 }    
-
-
-
+const score = document.querySelector('.score')
+const rockButton = document.querySelector('.rock')
+const paperButton = document.querySelector('.paper')
+const scissorsButton = document.querySelector('.scissors')
+const outcomeDiv = document.querySelector('.outcome')
 
 const computerSelection = getComputerChoice();
 
 let x = 0 
+let comp = 0 
 
 function playRound(computerSelection,playerSelection){
     
-    if (computerSelection == "rock" && playerSelection == "scissors"){
-        x--
-        return "Sorry, you lost. -1 point"
+    if (x == 5  ){
+            const p = document.createElement('p')
+            p.innerText = "WINNER: PLAYER"
+            score.append(p)
+
+        }
+    else if (comp == 5) {
+        const p = document.createElement('p')
+            p.innerText = "WINNER: COMPUTER"
+            score.append(p)
+
+
+    }
+    else if (computerSelection == "rock" && playerSelection == "scissors"){
+        comp++ 
+        const p = document.createElement('p')
+        p.innerText = "Sorry, you lost." + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
     else if (computerSelection == "rock" &&  playerSelection == "paper"){
-        x++ 
-        return "Congrats, you won. +1 point"  
+        x++
+        const p = document.createElement('p')
+        p.innerText = "Congrats, you won. +1 point" + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
     else if (computerSelection == "rock" && playerSelection == "rock"){
-        return "Wow, it's a tie"
+        const p = document.createElement('p')
+        p.innerText = "Wow, it's a tie" + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
     else if (computerSelection == "scissors" && playerSelection == "paper"){
-        x--
-        return "Sorry, you lost. -1 point"
+        comp++
+        const p = document.createElement('p')
+        p.innerText = "Sorry, you lost. " + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
     else if (computerSelection == "scissors" && playerSelection == "rock"){
         x++
-        return "Congrats, you won! +1 point"
+        const p = document.createElement('p')
+        p.innerText = "Congrats, you won. +1 point" + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
     else if (computerSelection == "scissors" && playerSelection == "scissors"){
-        return "Wow, it's a tie"
+        const p = document.createElement('p')
+        p.innerText = "Wow, it's a tie"+ " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
-    else if (computerSelection == "paper" && playerSelection == "rock"){
-        x--
-        return "Sorry, you lost -1 point"
+    else if (computerSelection == "paper" && playerSelection == "rock"){ 
+        comp++
+        const p = document.createElement('p')
+        p.innerText = "Sorry, you lost. " + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
     else if (computerSelection == "paper" && playerSelection == "scissors"){
         x++
-        return "Congrats, you won! +1 point"
+        const p = document.createElement('p')
+        p.innerText = "Congrats, you won. +1 point" + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
     else if (computerSelection == "paper" && playerSelection == "paper"){
-        return "Wow it's a tie"
+        const p = document.createElement('p')
+        p.innerText = "Wow, it's a tie" + " Computer: " + comp + "  Player: " + x ; 
+        outcomeDiv.appendChild(p)
     }
 }
 
-
-function game(){
+rockButton.addEventListener('click', () => {
+    const computerSelection = getComputerChoice()
+    const playerSelection = 'rock'
+    playRound(computerSelection,playerSelection)
+})
+paperButton.addEventListener('click', () => {
+    const computerSelection = getComputerChoice()
+    const playerSelection = 'paper'
+    playRound(computerSelection,playerSelection)
+})
+scissorsButton.addEventListener('click', () => {
+    const computerSelection = getComputerChoice()
+    const playerSelection = 'scissors'
+    playRound(computerSelection,playerSelection)
+})
+/* function game(){
 for (let i = 1; i < 6; i++){
     const playerSelection = prompt("Rock, Paper, or Scissors").toLowerCase();
     const computerSelection = getComputerChoice();
@@ -67,4 +115,5 @@ if (x >= 3){
 
 };
 console.log(game());
-
+Computer: ${comp} Player: ${x}
+ */
